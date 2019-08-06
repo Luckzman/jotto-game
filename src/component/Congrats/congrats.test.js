@@ -3,7 +3,7 @@ import Enzyme, { shallow } from 'enzyme';
 import EnzymeAdapter from 'enzyme-adapter-react-16';
 
 import Congrats from './';
-import { findTestByAttr } from './../../test/testUtils';
+import { findTestByAttr, checkProps } from './../../test/testUtils';
 
 Enzyme.configure({ adapter: new EnzymeAdapter() })
 
@@ -24,5 +24,9 @@ describe('Congrats Component', () => {
     const wrapper = setup({ success: true });
     const congratsMsg = findTestByAttr(wrapper, 'congrats-message');
     expect(congratsMsg.text().length).not.toBe(0);
+  });
+  it('should not throw warning with expected props', () => {
+    const expectedProps = { success: false };
+    checkProps(Congrats, expectedProps);
   });
 });
