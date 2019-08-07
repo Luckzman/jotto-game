@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export function GuessedWord(prop) {
+export default function GuessedWord(prop) {
   const { guessedWord } = prop;
   const guessWordInstruction = <h2 data-test='guessWord-instruction'>Try to guess the secret word</h2>;
   const guessWordTable = (
     <div data-test='guessWord-div'>
-      <table>
-        <thead>
+      <table className="table table-sm table-dark">
+        <thead className="thead-light">
           <tr><th>Guess</th><th>Matching Letters</th></tr>
         </thead>
         <tbody>

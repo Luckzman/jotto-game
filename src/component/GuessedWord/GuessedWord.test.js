@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { GuessedWord } from './GuessedWord'
+import GuessedWord from '.'
 import { findTestByAttr, checkProps } from '../../test/testUtils';
 
 const expectedGuess = {
