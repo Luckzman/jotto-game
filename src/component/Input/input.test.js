@@ -7,21 +7,27 @@ import Input from './'
 const setup = (initialState = {}) => {
   const store = storeFactory(initialState)
   const wrapper = shallow(<Input store={store} />).dive().dive();
-  console.log(wrapper.debug());
-  // return wrapper;
+  return wrapper;
 };
-setup();
 
 describe('render', () => {
   describe('word has not been guessed', () => {
+    let wrapper;
+    beforeEach(() => {
+      const initialState = { success: false };
+      wrapper = setup(initialState)
+    });
     it('should render without error', () => {
-
+      const inputContainer = findTestByAttr(wrapper, 'input-container');
+      expect(inputContainer.length).toBe(1);
     });
     it('should render input box', () => {
-
+      const inputBox = findTestByAttr(wrapper, 'input-box');
+      expect(inputBox.length).toBe(1);
     });
     it('should render submit button', () => {
-
+      const submitButton = findTestByAttr(wrapper, 'submit-button');
+      expect(submitButton.length).toBe(1);
     });
   })
   describe('word has been guessed', () => {
