@@ -3,6 +3,9 @@ import { shallow } from 'enzyme';
 
 import GuessedWord from '.'
 import { findTestByAttr, checkProps } from '../../test/testUtils';
+// import EnzymeAdapter from 'enzyme-adapter-react-16';
+
+// Enzyme.configure({ adapter: new EnzymeAdapter() })
 
 const expectedGuess = {
   guessedWord: [{ guess: 'train', letterMatchCount: 3 }]

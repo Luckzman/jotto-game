@@ -2,6 +2,8 @@ import React from 'react';
 
 import Congrats from './component/Congrats';
 import GuessedWord from './component/GuessedWord';
+import Input from './component/Input';
+
 import './App.css';
 
 function App() {
@@ -13,6 +15,7 @@ function App() {
   return (
     <div className="container">
       <h1>Jotto Game</h1>
+      <Input />
       <Congrats success={true} />
       <GuessedWord guessedWord={guessedWord} />
     </div>

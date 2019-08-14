@@ -1,8 +1,9 @@
 /* eslint-disable react/forbid-foreign-prop-types */
 import checkPropTypes from 'check-prop-types';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 
 import rootReducer from '../reducers'
+import { middlewares } from './../configureStore';
 
 /**
  * @description returns test with a given data-test attribute
@@ -33,5 +34,6 @@ export const checkProps = (component, conformingProps) => {
  * @returns {Store} - Redux store
  */
 export const storeFactory = (initialState) => {
-  return createStore(rootReducer, initialState)
+  const createStoreWithMiddlewares = applyMiddleware(...middlewares)(createStore)
+  return createStoreWithMiddlewares(rootReducer, initialState)
 }
