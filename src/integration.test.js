@@ -21,9 +21,6 @@ describe('guessedWord Action Dispatcher', () => {
           letterMatchCount: 3
         }]
       };
-      console.log(newState, 'newState =>>>>')
-
-      console.log(expectedState, 'expectedState <<<<<=>>>>')
       expect(newState).toEqual(expectedState);
     })
     it('should update state correctly for successful guess', () => {
