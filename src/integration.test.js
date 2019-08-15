@@ -16,7 +16,7 @@ describe('guessedWord Action Dispatcher', () => {
       const expectedState = {
         ...initialState,
         success: false,
-        guessWords: [{
+        guessedWords: [{
           guessedWord: 'train',
           letterMatchCount: 3
         }]
@@ -29,7 +29,7 @@ describe('guessedWord Action Dispatcher', () => {
       const expectedState = {
         ...initialState,
         success: true,
-        guessWords: [{
+        guessedWords: [{
           guessedWord: 'party',
           letterMatchCount: 5
         }]
@@ -38,8 +38,8 @@ describe('guessedWord Action Dispatcher', () => {
     })
   })
   describe('some guessed words', () => {
-    const guessWords = [{ guessedWord: 'agile', letterMatchCount: 1 }];
-    const initialState = { guessWords, secretWord };
+    const guessedWords = [{ guessedWord: 'agile', letterMatchCount: 1 }];
+    const initialState = { guessedWords, secretWord };
     let store;
     beforeEach(() => {
       store = storeFactory(initialState);
@@ -50,7 +50,7 @@ describe('guessedWord Action Dispatcher', () => {
       const expectedState = {
         secretWord,
         success: false,
-        guessWords: [...guessWords, {
+        guessedWords: [...guessedWords, {
           guessedWord: unsuccessfulGuess,
           letterMatchCount: 3
         }]
@@ -63,7 +63,7 @@ describe('guessedWord Action Dispatcher', () => {
       const expectedState = {
         secretWord,
         success: true,
-        guessWords: [...guessWords, {
+        guessedWords: [...guessedWords, {
           guessedWord: secretWord,
           letterMatchCount: 5
         }]

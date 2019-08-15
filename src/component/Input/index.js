@@ -31,7 +31,6 @@ class Input extends React.Component {
 }
 
 const mapStateToProps = ({ success }) => {
-
   return { success };
 }
 
