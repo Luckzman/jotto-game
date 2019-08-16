@@ -8,15 +8,15 @@ import { getSecretWord } from './actions'
 
 import './App.css';
 
-class App extends Component {
+export class UnconnectedApp extends Component {
+  componentDidMount() {
+    // get the secret word
+    this.props.getSecretWord();
+  }
+
   render() {
-    // const guessedWord = [
-    //   { guess: 'train', letterMatchCount: 3 },
-    //   { guess: 'drunk', letterMatchCount: 1 },
-    //   { guess: 'party', letterMatchCount: 5 }
-    // ];
     return (
-      <div className="container">
+      <div cl assName="container">
         <h1>Jotto Game</h1>
         <Congrats success={this.props.success} />
         <Input />
@@ -30,4 +30,4 @@ const mapStateToProps = (state) => {
   const { success, guessedWords, secretWord } = state;
   return { success, guessedWords, secretWord };
 }
-export default connect(mapStateToProps, { getSecretWord })(App);
+export default connect(mapStateToProps, { getSecretWord })(UnconnectedApp);
