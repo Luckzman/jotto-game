@@ -88,5 +88,8 @@ describe('input Component Action', () => {
     const guessWordMockArg = guessWordMock.mock.calls[0][0];
     expect(guessWordMockArg).toBe(guessWord);
   });
+  test('input box clears after submitting', () => {
+    expect(wrapper.instance().inputBox.value).toBe('');
+  })
 
 })
