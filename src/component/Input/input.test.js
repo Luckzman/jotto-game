@@ -66,16 +66,27 @@ describe('redux props', () => {
   })
 });
 
-test('`guessWord` action on button click', () => {
-  const guessWordMock = jest.fn();
+describe('input Component Action', () => {
+  let guessWordMock = jest.fn();
   const props = {
     guessWord: guessWordMock
   }
-  const wrapper = shallow(<UnconnectedInput {...props} />);
-  const submitButton = findTestByAttr(wrapper, 'submit-button');
-  submitButton.simulate('click');
-  wrapper.update();
-  const guessWordMockCount = guessWordMock.mock.calls.length;
+  let wrapper = shallow(<UnconnectedInput {...props} />);
+  let submitButton = findTestByAttr(wrapper, 'submit-button');
+  const guessWord = 'train';
+  beforeEach(() => {
+    wrapper.instance().inputBox = { value: guessWord }
+    submitButton.simulate('click', { preventDefault() { } });
+    wrapper.update();
 
-  expect(guessWordMockCount).toBe(1);
-});
+  });
+  test('`guessWord` action on button click', () => {
+    const guessWordMockCount = guessWordMock.mock.calls.length;
+    expect(guessWordMockCount).toBe(1);
+  });
+  test(' call `guessWord` with input value as argument', () => {
+    const guessWordMockArg = guessWordMock.mock.calls[0][0];
+    expect(guessWordMockArg).toBe(guessWord);
+  });
+
+})
