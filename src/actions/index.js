@@ -4,7 +4,9 @@ import { getLetterMatchCount } from '../helpers'
 export const actionTypes = {
   CORRECT_GUESS: 'CORRECT_GUESS',
   GUESS_WORD: 'GUESS_WORD',
-  SET_SECRET_WORD: 'SET_SECRET_WORD'
+  SET_SECRET_WORD: 'SET_SECRET_WORD',
+  NEW_GAME: 'NEW_GAME',
+  RESET_GUESS_WORD: 'RESET_GUESS_WORD'
 }
 
 // export const correctGuess = () => {
@@ -45,5 +47,12 @@ export const getSecretWord = () => {
           payload: response.data,
         })
       })
+  }
+}
+
+export const newGame = () => {
+  return (dispatch) => {
+    dispatch({ type: actionTypes.NEW_GAME });
+    dispatch({ type: actionTypes.RESET_GUESS_WORD })
   }
 }
