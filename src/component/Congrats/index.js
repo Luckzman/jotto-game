@@ -10,7 +10,7 @@ export default function Congrats(props) {
   const { success } = props;
   return success && (
     <div data-test='congrats-component' className="alert alert-success">
-      <h2 data-test='congrats-message'>Congratulations! You guessed the word!</h2>
+      <h4 data-test='congrats-message'>Congratulations! You guessed the word!</h4>
     </div>
   )
 };

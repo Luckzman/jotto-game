@@ -31,7 +31,6 @@ describe('redux properties', () => {
     const guessedWords = [{ guessedWord: 'train', letterMatchCount: 3 }];
     const wrapper = setup({ guessedWords });
     const guessWordsProp = wrapper.instance().props.guessedWords;
-    console.log(wrapper.instance().props)
     expect(guessWordsProp).toBe(guessedWords);
   });
   it('`getSecretWord` action creator is a function on the props', () => {

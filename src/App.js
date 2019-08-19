@@ -7,6 +7,7 @@ import Input from './component/Input';
 import { getSecretWord } from './actions'
 
 import './App.css';
+import TotalGuess from './component/TotalGuess';
 
 export class UnconnectedApp extends Component {
   componentDidMount() {
@@ -15,12 +16,16 @@ export class UnconnectedApp extends Component {
   }
 
   render() {
+    const { success, guessedWords } = this.props;
     return (
-      <div cl assName="container">
+      <div className="container">
         <h1>Jotto Game</h1>
-        <Congrats success={this.props.success} />
+        {/* <h3>the secret word is {this.props.secretWord}</h3> */}
+        <Congrats success={success} />
+
         <Input />
-        <GuessedWord guessedWords={this.props.guessedWords} />
+        <GuessedWord guessedWords={guessedWords} />
+        {guessedWords.length > 0 && <TotalGuess totalGuessNumber={guessedWords.length} />}
       </div>
     );
   }

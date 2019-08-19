@@ -2,18 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function GuessedWord(prop) {
-  const { guessedWord } = prop;
+  const { guessedWords } = prop;
   const guessWordInstruction = <h2 data-test='guessWord-instruction'>Try to guess the secret word</h2>;
   const guessWordTable = (
     <div data-test='guessWord-div'>
       <table className="table table-sm table-dark">
         <thead className="thead-light">
-          <tr><th>Guess</th><th>Matching Letters</th></tr>
+          <tr><th>Guess No</th><th>Guess</th><th>Matching Letters</th></tr>
         </thead>
         <tbody>
-          {guessedWord.map((word, index) => (
+          {guessedWords.map((word, index) => (
             <tr data-test='guessWord' key={index}>
-              <td>{word.guess}</td>
+              <td>{index + 1}</td>
+              <td>{word.guessedWord}</td>
               <td>{word.letterMatchCount}</td>
             </tr>)
           )}
@@ -24,20 +25,20 @@ export default function GuessedWord(prop) {
 
   return (
     <div data-test='guessWord-container'>
-      {(guessedWord.length === 0 ? guessWordInstruction : guessWordTable)}
+      {(guessedWords.length === 0 ? guessWordInstruction : guessWordTable)}
     </div>
   );
 };
 
 GuessedWord.propTypes = {
-  guessedWord: PropTypes.arrayOf(
+  guessedWords: PropTypes.arrayOf(
     PropTypes.shape({
-      guess: PropTypes.string.isRequired,
+      guessedWord: PropTypes.string.isRequired,
       letterMatchCount: PropTypes.number.isRequired
     })
   )
 }
 
 GuessedWord.defaultProps = {
-  guessedWord: []
+  guessedWords: []
 }

@@ -8,7 +8,7 @@ import { findTestByAttr, checkProps } from '../../test/testUtils';
 // Enzyme.configure({ adapter: new EnzymeAdapter() })
 
 const expectedGuess = {
-  guessedWord: [{ guess: 'train', letterMatchCount: 3 }]
+  guessedWords: [{ guessedWord: 'train', letterMatchCount: 3 }]
 }
 const setup = (props = {}) => shallow(<GuessedWord {...props} />)
 test('should not throw warning with expected props', () => {
@@ -18,7 +18,7 @@ test('should not throw warning with expected props', () => {
 describe('GuessedWord Component with no guessed word', () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = setup({ guessedWord: [] });
+    wrapper = setup({ guessedWords: [] });
   })
   it('should render `GuessedWord` component without error', () => {
     const guessWordContainer = findTestByAttr(wrapper, 'guessWord-container');
@@ -32,13 +32,13 @@ describe('GuessedWord Component with no guessed word', () => {
 
 describe('GuessWord Component with some guessedWord', () => {
   let wrapper;
-  const guessedWord = [
-    { guess: 'train', letterMatchCount: 3 },
-    { guess: 'drunk', letterMatchCount: 1 },
-    { guess: 'party', letterMatchCount: 5 }
+  const guessedWords = [
+    { guessedWord: 'train', letterMatchCount: 3 },
+    { guessedWord: 'drunk', letterMatchCount: 1 },
+    { guessedWord: 'party', letterMatchCount: 5 }
   ];
   beforeEach(() => {
-    wrapper = setup({ guessedWord });
+    wrapper = setup({ guessedWords });
   });
   it('should render without errors', () => {
     const guessWordContainer = findTestByAttr(wrapper, 'guessWord-container');
@@ -50,7 +50,7 @@ describe('GuessWord Component with some guessedWord', () => {
   });
   it('should return the guessedWord and the letterMatchCount', () => {
     const guessWordNode = findTestByAttr(wrapper, 'guessWord')
-    expect(guessWordNode.length).toBe(guessedWord.length)
+    expect(guessWordNode.length).toBe(guessedWords.length)
   })
 })
 

@@ -11,13 +11,12 @@ export class UnconnectedInput extends React.Component {
 
   handleSubmit = (evt) => {
     evt.preventDefault()
-    const guessedWord = this.inputBox.value;
-
+    const guessedWord = this.inputBox.current.value;
     if (guessedWord && guessedWord.length > 0) {
       this.props.guessWord(guessedWord);
     }
+    this.inputBox.current.value = '';
 
-    this.inputBox.value = '';
   }
 
   render() {
