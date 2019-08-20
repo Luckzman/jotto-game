@@ -29,6 +29,8 @@ describe('render', () => {
       const submitButton = findTestByAttr(wrapper, 'submit-button');
       expect(submitButton.length).toBe(1);
     });
+
+
   })
   describe('word has been guessed', () => {
     let wrapper;
@@ -91,5 +93,53 @@ describe('input Component Action', () => {
   test('input box clears after submitting', () => {
     expect(wrapper.instance().inputBox.current.value).toBe('');
   })
+});
 
+describe('Give up Btn Component', () => {
+  let wrapper;
+  const secretWord = 'party';
+  beforeEach(() => {
+    const initialState = {
+      success: false,
+      secretWord,
+      guessedWords: [
+        {
+          guessedWord: 'party',
+          letterMatchCount: 2,
+        }
+      ]
+    }
+    wrapper = setup(initialState);
+  });
+  it('should display giveup button when length of guessword is 1', () => {
+    const giveUpBtn = findTestByAttr(wrapper, 'give-up-btn');
+    expect(giveUpBtn.length).toBe(1);
+  });
+  it('should not display giveup button when length of guessword is less than 1', () => {
+    wrapper = setup({ success: false, guessedWords: [] });
+    const giveUpBtn = findTestByAttr(wrapper, 'give-up-btn');
+    expect(giveUpBtn.length).toBe(0);
+  })
+  it('should display `secret word` and `better luck next time message`', () => {
+    const tryAgainDisplayContainer = findTestByAttr(wrapper, 'try-again-div');
+    const giveUpBtn = findTestByAttr(wrapper, 'give-up-btn');
+    giveUpBtn.simulate('click');
+    expect(giveUpBtn.length).toBe(0)
+    expect(tryAgainDisplayContainer.length).toBe(1)
+    expect(tryAgainDisplayContainer.text()).toContain(secretWord)
+  })
+  it('should display `new word` component', () => {
+    const giveUpBtn = findTestByAttr(wrapper, 'give-up-btn');
+    const newWord = findTestByAttr(wrapper, 'new-word');
+    giveUpBtn.simulate('click');
+    wrapper.update();
+    expect(newWord.length).toBe(1);
+  })
+  it('should hide the Input component when there is a click event', () => {
+    const giveUpBtn = findTestByAttr(wrapper, 'give-up-btn');
+    const inputContainer = findTestByAttr(wrapper, 'input-container');
+    giveUpBtn.simulate('click');
+    wrapper.update();
+    expect(inputContainer.length).toBe(1);
+  })
 })
