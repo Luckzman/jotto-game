@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import NewWord from './';
+import { NewWord } from './';
 import { findTestByAttr, checkProps, storeFactory } from '../../test/testUtils';
 
 const setup = (initialState) => {
-  const store = storeFactory(initialState)
-  const wrapper = shallow(<NewWord store={store} />).dive().dive();
+
+  const wrapper = shallow(<NewWord />);
   return wrapper;
 };
 
@@ -14,26 +14,18 @@ const setup = (initialState) => {
 describe('NewWord Component', () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = setup({ success: true });
+    wrapper = setup();
   })
-  it('should render `NewWord Component without error` when success props is true', () => {
+  it('should render `NewWord Component without error` ', () => {
     const newWord = findTestByAttr(wrapper, 'new-word');
     expect(newWord.length).toBe(1);
   });
-  it('should render `NewWord Component without error` when success props is true', () => {
+  it('should render `NewWord Button` without error', () => {
     const newWordBtn = findTestByAttr(wrapper, 'new-word-btn');
     expect(newWordBtn.length).toBe(1);
   });
-  // it('should call createNewGame when NewWord component is clicked', () => {
-  //   console.log(wrapper.instance())
-  //   // const createNewGame = wrapper.instance().createNewGame()
-  //   const newWordBtn = findTestByAttr(wrapper, 'new-word-btn');
-  //   newWordBtn.simulate('click')
-  //   expect(wrapper.instance().createNewGame()).toHaveBeenCalled();
-  // });
-  it('should not render `NewWord Component` when success props is false', () => {
-    wrapper = setup({ success: false });
-    const newWord = findTestByAttr(wrapper, 'new-word');
-    expect(newWord.length).toBe(0);
-  });
+  it('should not throw warning with expected props', () => {
+    const expectedProps = { createNewGame: jest.fn() };
+    checkProps(NewWord, expectedProps);
+  })
 });

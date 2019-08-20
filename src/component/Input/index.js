@@ -54,13 +54,14 @@ export class UnconnectedInput extends React.Component {
             onClick={this.handleSubmit}>
             Submit
         </button>
-          {guessedWords && (guessedWords.length > 0) && (<button
-            data-test="give-up-btn"
-            type="submit"
-            className="btn btn-danger mb-2 ml-4"
-            onClick={this.giveUpGame}>
-            Give Up
-        </button>)}
+          {guessedWords && (guessedWords.length > 0) && (
+            <button
+              data-test="give-up-btn"
+              type="submit"
+              className="btn btn-danger mb-2 ml-4"
+              onClick={this.giveUpGame}>
+              Give Up
+          </button>)}
         </form> : (
           <React.Fragment>
             <GiveUpMsg secretWord={secretWord} />
@@ -76,7 +77,7 @@ export class UnconnectedInput extends React.Component {
 }
 
 const mapStateToProps = ({ success, guessedWords, secretWord }) => {
-  console.log(success, guessedWords)
+  // console.log(success, guessedWords)
   return { success, guessedWords, secretWord };
 }
 

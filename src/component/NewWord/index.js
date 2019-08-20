@@ -19,6 +19,3 @@ export function NewWord(props) {
 NewWord.propTypes = {
   createNewGame: PropTypes.func
 }
-
-
-

@@ -38,14 +38,21 @@ export const guessWord = (guessedWord) => {
   }
 }
 
-export const getSecretWord = () => {
+export const getSecretWord = (userInput) => {
   return (dispatch) => {
     return axios.get('http://localhost:3030')
       .then(response => {
-        dispatch({
-          type: actionTypes.SET_SECRET_WORD,
-          payload: response.data,
-        })
+        if (userInput) {
+          dispatch({
+            type: actionTypes.SET_SECRET_WORD,
+            payload: userInput,
+          })
+        } else {
+          dispatch({
+            type: actionTypes.SET_SECRET_WORD,
+            payload: response.data,
+          })
+        }
       })
   }
 }
