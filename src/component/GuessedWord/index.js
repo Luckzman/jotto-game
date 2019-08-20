@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function GuessedWord(prop) {
   const { guessedWords } = prop;
-  const guessWordInstruction = <h2 data-test='guessWord-instruction'>Try to guess the secret word</h2>;
+  const guessWordInstruction = <p data-test='guessWord-instruction'>Try to guess the secret word</p>;
   const guessWordTable = (
     <div data-test='guessWord-div'>
       <table className="table table-sm table-dark">
