@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import { NewWord } from './';
-import { findTestByAttr, checkProps, storeFactory } from '../../test/testUtils';
+import { findTestByAttr, checkProps, } from '../../test/testUtils';
 
 const setup = (initialState) => {
 

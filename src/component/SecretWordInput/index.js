@@ -8,6 +8,7 @@ export class SecretWordInput extends Component {
     secret: '',
   }
 
+
   handleChange = (event) => {
     this.setState({ secret: event.target.value })
   }

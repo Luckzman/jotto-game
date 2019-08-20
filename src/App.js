@@ -37,18 +37,9 @@ export class UnconnectedApp extends Component {
     this.setState({ isHidden: true })
   }
 
-  // createSecretWord = (evt) => {
-  //   evt.preventDefault()
-  //   this.props.getSecretWord(this.inputBox.current.value);
-  //   this.inputBox.current.value = '';
-  //   this.setState({ isHidden: false })
-
-  // }
-
   render() {
     const { success, guessedWords, error } = this.props;
     const { isHidden } = this.state;
-    console.log(`the secret word is ${this.props.secretWord}`)
     return (
       <div className="container">
         <h1>Jotto Game</h1>
