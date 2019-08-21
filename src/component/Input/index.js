@@ -4,6 +4,8 @@ import { guessWord, newGame } from '../../actions';
 import GiveUpMsg from '../GiveUpMsg';
 import { NewWord } from '../NewWord';
 
+import './Input.scss';
+
 export class UnconnectedInput extends React.Component {
   state = {
     isHidden: true,
@@ -30,8 +32,10 @@ export class UnconnectedInput extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault()
     const { secret } = this.state;
-    this.props.guessWord(secret);
-    this.setState({ secret: '' })
+    if (secret.length > 0) {
+      this.props.guessWord(secret);
+      this.setState({ secret: '' })
+    }
   }
 
   /**
@@ -60,32 +64,36 @@ export class UnconnectedInput extends React.Component {
     const { isHidden, secret } = this.state;
     const input = (
       isHidden ?
-        <form className="form-inline">
-          <input
-            data-test="input-box"
-            className="mb-2 mx-sm-3"
-            value={secret}
-            onChange={this.handleChange}
-            id="word-guess"
-            type="text"
-            placeholder="enter guess"
-          />
-          <button
-            data-test="submit-button"
-            type="submit"
-            className="btn btn-primary mb-2"
-            onClick={this.handleSubmit}>
-            Submit
-        </button>
-          {guessedWords && (guessedWords.length > 0) && (
+        <React.Fragment>
+          <p data-test='guessWord-instruction'>Try to guess the secret word</p>
+          <form className="form-inline mb-4">
+            <input
+              data-test="input-box"
+              className="mb-2 mx-sm-3 userInput"
+              value={secret}
+              onChange={this.handleChange}
+              id="word-guess"
+              type="text"
+              placeholder="enter guess"
+            />
             <button
-              data-test="give-up-btn"
+              data-test="submit-button"
               type="submit"
-              className="btn btn-danger mb-2 ml-4"
-              onClick={this.giveUpGame}>
-              Give Up
-          </button>)}
-        </form> : (
+              className="btn btn-primary mb-2"
+              onClick={this.handleSubmit}>
+              Submit
+          </button>
+            {guessedWords && (guessedWords.length > 0) && (
+              <button
+                data-test="give-up-btn"
+                type="submit"
+                className="btn btn-danger mb-2 ml-2"
+                onClick={this.giveUpGame}>
+                Give Up
+            </button>)}
+          </form>
+        </React.Fragment>
+        : (
           <React.Fragment>
             <GiveUpMsg secretWord={secretWord} />
             <NewWord createNewGame={this.handleNewGame} />

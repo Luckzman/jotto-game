@@ -1,0 +1,17 @@
+@import 'variables';
+
+.container{
+  width: 50%;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  border: 1px solid $grey;
+
+  .header{
+    width: 100%;
+    background-color: $primary;
+    padding: 10px;
+    color: $light;
+    line-height: 3rem;
+  }
+}

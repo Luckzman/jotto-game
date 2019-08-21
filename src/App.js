@@ -8,7 +8,7 @@ import ServerError from './component/ServerError';
 import SecretWordInput from './component/SecretWordInput';
 import { getSecretWord, newGame } from './actions'
 
-import './App.css';
+import './App.scss';
 import TotalGuess from './component/TotalGuess';
 import { NewWord } from './component/NewWord';
 
@@ -53,9 +53,13 @@ export class UnconnectedApp extends Component {
     const { isHidden } = this.state;
     return (
       <div className="container">
-        <h1>Jotto Game</h1>
+        <div className="header mb-5">
+          <h1>Jotto Game</h1>
+        </div>
         {error ? <ServerError /> :
-          (isHidden ? <SecretWordInput hideInput={() => this.setState({ isHidden: false })} />
+          (isHidden ?
+            <SecretWordInput
+              hideInput={() => this.setState({ isHidden: false })} />
             :
             <React.Fragment>
               <Congrats success={success} />
