@@ -13,15 +13,18 @@ export class UnconnectedInput extends React.Component {
 
   state = {
     isHidden: true,
+    secret: ''
   }
 
-  handleSubmit = (evt) => {
-    evt.preventDefault()
-    const guessedWord = this.inputBox.current.value;
-    if (guessedWord && guessedWord.length > 0) {
-      this.props.guessWord(guessedWord);
-    }
-    this.inputBox.current.value = '';
+  handleChange = (event) => {
+    this.setState({ secret: event.target.value })
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+    const { secret } = this.state;
+    this.props.guessWord(secret);
+    this.setState({ secret: '' })
   }
 
   giveUpGame = () => {
@@ -35,14 +38,15 @@ export class UnconnectedInput extends React.Component {
 
   render() {
     const { success, guessedWords, secretWord } = this.props;
-    const { isHidden } = this.state;
+    const { isHidden, secret } = this.state;
     const input = (
       isHidden ?
         <form className="form-inline">
           <input
             data-test="input-box"
             className="mb-2 mx-sm-3"
-            ref={this.inputBox}
+            value={secret}
+            onChange={this.handleChange}
             id="word-guess"
             type="text"
             placeholder="enter guess"
@@ -77,7 +81,6 @@ export class UnconnectedInput extends React.Component {
 }
 
 const mapStateToProps = ({ success, guessedWords, secretWord }) => {
-  // console.log(success, guessedWords)
   return { success, guessedWords, secretWord };
 }
 

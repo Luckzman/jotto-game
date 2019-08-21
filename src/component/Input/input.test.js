@@ -77,7 +77,7 @@ describe('input Component Action', () => {
   let submitButton = findTestByAttr(wrapper, 'submit-button');
   const guessWord = 'train';
   beforeEach(() => {
-    wrapper.instance().inputBox.current = { value: guessWord }
+    wrapper.instance().state = { secret: guessWord }
     submitButton.simulate('click', { preventDefault() { } });
     wrapper.update();
 
@@ -91,7 +91,7 @@ describe('input Component Action', () => {
     expect(guessWordMockArg).toBe(guessWord);
   });
   test('input box clears after submitting', () => {
-    expect(wrapper.instance().inputBox.current.value).toBe('');
+    expect(wrapper.instance().state.secret).toBe('');
   })
 });
 

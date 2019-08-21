@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getSecretWord } from '../../actions';
 
@@ -24,7 +25,7 @@ export class SecretWordInput extends Component {
     const { secret } = this.state;
 
     return (
-      <form>
+      <form data-test='secret-word-form'>
         <p>Enter a secret word for someone to guess</p>
         <input
           className="mb-2 mx-sm-3"
@@ -39,6 +40,11 @@ export class SecretWordInput extends Component {
       </form>
     )
   }
+}
+
+SecretWordInput.propTypes = {
+  getSecretWord: PropTypes.func.isRequired,
+  hideInput: PropTypes.func.isRequired
 }
 
 export default connect(null, { getSecretWord })(SecretWordInput);
