@@ -22,11 +22,6 @@ describe('TotalGuess Component', () => {
     const totalGuessContainer = findTestByAttr(wrapper, 'total-guess-container');
     expect(totalGuessContainer.length).toBe(1);
   })
-  // it('should not render the total guess container when `totalGuessNumber` is zero', () => {
-  //   const wrapper = setup({ totalGuessNumber: 0 })
-  //   const totalGuessContainer = findTestByAttr(wrapper, 'total-guess-container');
-  //   expect(totalGuessContainer.length).toBe(0);
-  // })
   it('should expect `total guess number` to equal the passed in props', () => {
     const totalGuessDisplay = findTestByAttr(wrapper, 'total-guess-display');
     expect(totalGuessDisplay.text()).toContain(props.totalGuessNumber)

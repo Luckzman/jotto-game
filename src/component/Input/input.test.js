@@ -71,6 +71,7 @@ describe('redux props', () => {
 describe('input Component Action', () => {
   let guessWordMock = jest.fn();
   const props = {
+    secretWord: 'party',
     guessWord: guessWordMock
   }
   let wrapper = shallow(<UnconnectedInput {...props} />);

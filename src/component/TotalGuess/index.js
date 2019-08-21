@@ -1,6 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/**
+ *
+ * @description This Component returns all the total number of guessess
+ * @export TotalGuess
+ * @param {object} props
+ * @returns {JSX}
+ */
 export default function TotalGuess(props) {
   const { totalGuessNumber } = props;
   return (

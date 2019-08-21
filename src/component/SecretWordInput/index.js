@@ -9,11 +9,23 @@ export class SecretWordInput extends Component {
     secret: '',
   }
 
-
+  /**
+     *
+     * @description grab text from input box
+     * @param {object} event - event object
+     * @memberof SecretWordInput
+     * @returns {void}
+     */
   handleChange = (event) => {
     this.setState({ secret: event.target.value })
   }
 
+  /**
+   * @description this function update the secret word the user secret word 
+   * @param {object} evt - Javascript event object
+   * @memberof SecretWordInput
+   * @returns {void}
+   */
   createSecretWord = (evt) => {
     evt.preventDefault()
     const { secret } = this.state;

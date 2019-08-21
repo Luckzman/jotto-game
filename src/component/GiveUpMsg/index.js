@@ -1,6 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/**
+ *
+ * @description - GiveUpMsg A React Component 
+ * @export function
+ * @param {object} props
+ * @returns {JSX}
+ */
 export default function GiveUpMsg(props) {
   const { secretWord } = props;
   return (

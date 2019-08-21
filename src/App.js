@@ -28,11 +28,22 @@ export class UnconnectedApp extends Component {
     isHidden: false
   }
 
+  /**
+   * @description this function reset the game
+   *
+   * @memberof UnconnectedApp
+   * @returns {void}
+   */
   handleNewGame = () => {
     this.props.newGame();
     this.props.getSecretWord();
   }
 
+  /**
+   * @description - This function update the `isHidden`
+   *
+   * @memberof UnconnectedApp
+   */
   inputSecretWord = () => {
     this.setState({ isHidden: true })
   }

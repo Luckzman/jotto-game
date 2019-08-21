@@ -5,21 +5,28 @@ import GiveUpMsg from '../GiveUpMsg';
 import { NewWord } from '../NewWord';
 
 export class UnconnectedInput extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.inputBox = React.createRef();
-  }
-
   state = {
     isHidden: true,
     secret: ''
   }
 
+  /**
+   *
+   * @description grab text from input box
+   * @param {object} event - event object
+   * @memberof UnconnectedInput
+   * @returns {void}
+   */
   handleChange = (event) => {
     this.setState({ secret: event.target.value })
   }
 
+  /**
+   * @description - this function populates the store with user guessed word
+   * @param {object} event - event object
+   * @memberof UnconnectedInput
+   * @returns {void}
+   */
   handleSubmit = (event) => {
     event.preventDefault()
     const { secret } = this.state;
@@ -27,10 +34,22 @@ export class UnconnectedInput extends React.Component {
     this.setState({ secret: '' })
   }
 
+  /**
+   * @description This function hides the input box, button by setting is `isHidden` to `false`
+   *
+   * @memberof UnconnectedInput
+   * @returns {void}
+   */
   giveUpGame = () => {
     this.setState({ isHidden: false })
   }
 
+  /**
+   * @description this function restart the game and also reset the data
+   *
+   * @memberof UnconnectedInput
+   * @returns {void}
+   */
   handleNewGame = () => {
     this.props.newGame();
     this.setState({ isHidden: true })
