@@ -51,6 +51,7 @@ export class UnconnectedApp extends Component {
   render() {
     const { success, guessedWords, error } = this.props;
     const { isHidden } = this.state;
+    console.log(this.props.secretWord);
     return (
       <div className="container">
         <div className="header mb-5">
@@ -69,7 +70,7 @@ export class UnconnectedApp extends Component {
               {guessedWords.length > 0 && <TotalGuess totalGuessNumber={guessedWords.length} />}
               {guessedWords.length === 0 && (
                 <button
-                  className="btn btn-primary mt-5"
+                  className="btn btn-primary m-5"
                   onClick={this.inputSecretWord}
                 >
                   Enter your own secret word

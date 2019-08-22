@@ -9,11 +9,11 @@ import PropTypes from 'prop-types';
  */
 export function NewWord(props) {
   return (
-    <div data-test='new-word'>
+    <div data-test='new-word '>
       <button
         data-test='new-word-btn'
         type="button"
-        className="btn btn-success mb-2"
+        className="btn btn-success mb-4"
         onClick={props.createNewGame}>
         New Word
       </button>

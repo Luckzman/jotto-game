@@ -43,6 +43,7 @@ export const getSecretWord = (userInput) => {
   return (dispatch) => {
     return axios.get('http://localhost:3030')
       .then(response => {
+        console.log(response, 'response')
         if (userInput) {
           dispatch({
             type: actionTypes.SET_SECRET_WORD,
@@ -56,6 +57,7 @@ export const getSecretWord = (userInput) => {
         }
       })
       .catch(error => {
+        console.log(error, 'error')
         dispatch({
           type: actionTypes.GET_SECRET_WORD_ERROR
         })

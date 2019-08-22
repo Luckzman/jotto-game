@@ -1,0 +1,6 @@
+@import '../../variables';
+
+.congrats-container{
+  @include container();
+  padding-bottom: 0;
+}

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './Congrats.scss';
+
 /**
  * Functional react component for congratulatory message
  * @param {object} props - React Props
@@ -9,7 +11,7 @@ import PropTypes from 'prop-types';
 export default function Congrats(props) {
   const { success } = props;
   return success && (
-    <div data-test='congrats-component' className="alert alert-success">
+    <div data-test='congrats-component' className="alert alert-success congrats-container mb-4">
       <h4 data-test='congrats-message'>Congratulations! You guessed the word!</h4>
     </div>
   )
